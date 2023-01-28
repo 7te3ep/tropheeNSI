@@ -6,6 +6,12 @@ import { getNeighbors } from './tools.js'
 import { randInt,randArr ,rLen} from './tools.js'
 import { wfc } from './wfc.js'
 
+// retry if map is bad
+// no more absolute values
+// project architecture rework
+// wfc improved (more rules)
+// project clean and commented
+
 let renardSprite = new Image()
 renardSprite.src = "./pixil-frame-0.png"
 
