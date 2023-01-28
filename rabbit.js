@@ -10,17 +10,17 @@ class Rabbit {
 
     update(map,preyPop){
         if (map[this.x][this.y].score == 0) this.status = "dead"
-        let neighbors = getNeighbors(map,this)
         
-        shuffleArray(neighbors)
+        let neighbors = shuffleArray(getNeighbors(map,this))
+        
         neighbors =  neighbors.sort(function(a, b){return a.score - b.score})
-        let go = true
-        preyPop.forEach((prey)=>{
+        preyPop.every((prey)=>{
             if (prey.x == neighbors[0].x && prey.y == neighbors[0].y){
-                go = false
+                neighbors = []
+                return false
             }
         })
-        if (neighbors.length != 0 && go){
+        if (neighbors.length != 0){
             this.x = neighbors[0].x
             this.y = neighbors[0].y
         }
@@ -35,6 +35,7 @@ function shuffleArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
+    return array
 }
 
 

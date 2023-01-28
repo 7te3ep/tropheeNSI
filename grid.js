@@ -4,11 +4,10 @@ import {g,map} from "./main.js"
 export function drawGrid(map){
     map.forEach((x, i) => {
         x.forEach((y,j)=>{
-            if(map[i][j].wfc == true && map[i][j].entropy[0] == "wall") {ctx.fillStyle = "black"} 
             if(map[i][j].wfc == true && map[i][j].entropy[0] == "dirt") {ctx.fillStyle = "rgb(220, 162, 105)"} 
             if(map[i][j].wfc == true && map[i][j].entropy[0] == "land") {ctx.fillStyle = "rgb(116, 220, 105)"}
+            if(map[i][j].wfc == true && map[i][j].entropy[0] == "wall" || map[i][j].score == undefined) {ctx.fillStyle = "black"} 
             if (map[i][j].score == 0 ) {ctx.fillStyle = "red"}
-            if(map[i][j].score == undefined) {ctx.fillStyle = "black"} 
             ctx.fillRect(i*g.cell,j*g.cell,g.cell,g.cell)
             ctx.fillStyle= "white"
             ctx.fillText(map[i][j].score,i*g.cell,j*g.cell+ 10)
