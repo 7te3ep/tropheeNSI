@@ -12,7 +12,12 @@ import { wfc } from './wfc.js'
 // wfc improved (more rules)
 // project clean and commented
 
+<<<<<<< HEAD
 
+=======
+let renardSprite = new Image()
+renardSprite.src = "./pixil-frame-0.png"
+>>>>>>> 8425ff6f580ae3835fc61e4afeb691d3d9147c3a
 
 let rules = {
     "land":{cant:["wall"]},
