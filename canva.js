@@ -1,6 +1,6 @@
 const canva = document.querySelector('canvas')
 const ctx = canva.getContext('2d')
-canva.width = 1000
-canva.height = 1000
+canva.width = window.innerWidth
+canva.height = window.innerHeight
 
 export {canva,ctx}

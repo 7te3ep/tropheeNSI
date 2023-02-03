@@ -1,5 +1,6 @@
 import {canva,ctx} from './canva.js'
 import {g,map} from "./main.js"
+import { randArr } from './tools.js'
 
 export function createPool(map){
     let result = []
@@ -18,20 +19,21 @@ export function scoreExpand(cell){
     neighbors.forEach((item)=>{
             item.score = cell.score + 1
             if (item.entropy[0] == "wall") item.score = 500
+            if (item.entropy[0] == "tree") item.score = 500 
             if (item.entropy[0] == "dirt") item.score ++ 
     })
 }
 
 export function pathFinding(){
+    randArr(createPool(map).filter((item)=>item.entropy[0] == "land")).score = 0
     let index = 0
     let continu = true
     while (continu){
         continu = false
-        var pool = createPool(map).filter((item) => item.score == index && item.entropy[0] != "wall" )
+        var pool = createPool(map).filter((item) => item.score == index && item.entropy[0] != "wall" && item.entropy[0] != "tree")
 
         if (pool.length >= 1)continu = true
         pool.forEach((item)=>scoreExpand(item))
         index++
     }
 }
-
