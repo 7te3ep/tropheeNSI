@@ -2,28 +2,29 @@ import { getNeighbors } from "./tools.js"
 import { ctx } from "./canva.js"
 
 let renardSprite = new Image()
-renardSprite.src = "./rabbitTest.png"
+renardSprite.src = "./sprite/rabbitTest.png"
 class Rabbit {
-    constructor(canvas,g){
+    constructor(canvas,g,color){
         this.x
         this.y
-        this.adn  = {"color":"rgb("+Math.ceil(Math.random()*255).toString()+","+Math.ceil(Math.random()*255).toString()+","+Math.ceil(Math.random()*255).toString()+")"}
+        this.adn  = {"color":color}
         this.status = "alive"
     }
 
     update(map,preyPop){
         if (map[this.x][this.y].score == 0) this.status = "dead"
         
-        let neighbors = shuffleArray(getNeighbors(map,this))
-        
-        neighbors =  neighbors.sort(function(a, b){return a.score - b.score}).filter((item)=>{return item.score != 5 && item.score != undefined})
-        preyPop.every((prey)=>{
-            if (prey.x == neighbors[0].x && prey.y == neighbors[0].y){
-                neighbors = []
-                return false
+        let neighbors = shuffleArray(getNeighbors(map,this,false))
+        neighbors =  neighbors
+            .sort(function(a, b){return a.score - b.score})
+            .filter((item)=>{return item.score != 500 && item.score != undefined})
+        let go = true
+        preyPop.forEach((prey)=>{
+            if (prey.status == "alive" && prey.x == neighbors[0].x && prey.y == neighbors[0].y){
+                go = false
             }
         })
-        if (neighbors.length != 0){
+        if (neighbors.length != 0 && go){
             this.x = neighbors[0].x
             this.y = neighbors[0].y
         }

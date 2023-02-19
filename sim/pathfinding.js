@@ -25,7 +25,7 @@ export function scoreExpand(cell){
 }
 
 export function pathFinding(){
-    randArr(createPool(map).filter((item)=>item.entropy[0] == "land")).score = 0
+    randArr(createPool(map).filter((item)=>item.entropy[0] == "land" ||item.entropy[0] == "grass")).score = 0
     let index = 0
     let continu = true
     while (continu){
