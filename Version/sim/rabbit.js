@@ -17,7 +17,7 @@ class Rabbit {
         let neighbors = shuffleArray(getNeighbors(map,this,false))
         neighbors =  neighbors
             .sort(function(a, b){return a.score - b.score})
-            .filter((item)=>{return item.score != 500 && item.score != undefined})
+            .filter((item)=>{return item.entropy[0]!= "wall"})
         let go = true
         preyPop.forEach((prey)=>{
             if (prey.status == "alive" && prey.x == neighbors[0].x && prey.y == neighbors[0].y){
@@ -36,7 +36,6 @@ class Rabbit {
         ctx.fillRect(pos.x,pos.y+(pos.pixel),g.cell,g.cell*0.8)
         ctx.fillRect(pos.x,pos.y,g.cell*0.4,g.cell)
         ctx.fillRect(pos.x+(pos.pixel*3),pos.y,g.cell*0.4,g.cell)
-        ctx.drawImage(renardSprite, this.x*g.cell, this.y*g.cell,g.cell, g.cell)
     }
 }
 

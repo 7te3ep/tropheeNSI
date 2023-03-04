@@ -22,7 +22,7 @@ export function randInt(min, max) {
 
 let rLen = (arr)=>{return arr.length-1}
 let randArr = (arr) => {return arr[randInt(0,rLen(arr))]}
-const getBorders = (map)=> {return createPool(map).filter((item)=>{return item.entropy[0] != "wall" &&  item.entropy[0] != "tree" && item.score != undefined}).filter((item)=>{return item.x == 0 || item.x == map.length-2 || item.y == 0 || item.y == map.length-2})}
+const getBorders = (map)=> {return createPool(map).filter((item)=>{return item.entropy[0] != "wall" &&  item.entropy[0] != "tree" && item.score != undefined}).filter((item)=>{return item.x == 0 || item.x == map.length-1 || item.y == 0 || item.y == map[0].length-1})}
 let getColorRgbValue = (color) => {return color.replace("rgb(","").replace(")","").split(",")}
 
 function colorSim(color1,color2){

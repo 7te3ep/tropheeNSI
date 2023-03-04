@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Laboratoire Ecosysteme</h1>
+    <section id="simulation">
+        <canvas></canvas>
+        <div id="parameters">
+            <h2 id="day"></h2>
+            <button id="reset">RESET</button>
+            <button id="play">PLAY</button>
+            <button id="showPathScore">CELLS SCORES</button>
+            <div class="slider">
+                VITESSE
+                <input type="range" min="1" max="30" value="15" id="spd">
+            </div>
+        </div>
+    </section>
+    <section id="stats">
+        <h2>Statistiques</h2>
+        <div id="graphiques">
+            <div id="popStats" class="graphs"><p>Population de proie (🟦) et de predateur (🟥) a cours du temps</p> </div>
+            <div id="colorStats" class="graphs"><p>Evolution de la couleur moyenne des proies, de gauche a droite, de haut en bas chronologiquement</p> </div>
+        </div>
+    </section>
+    <script src="main.js" type="module"></script>
+    <script src = "http://d3js.org/d3.v3.min.js"> </script>
+</body>
+</html>

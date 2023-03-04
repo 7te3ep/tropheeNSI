@@ -8,6 +8,8 @@ import { wfc } from './wfc.js'
 import { Preda } from './preda.js'
 import { graph } from '../data.js'
 
+var regionsDuMonde = {"plaine":"rgb(116, 220, 105)","desert":"rgb(255, 0, 225)"}
+let biom = regionsDuMonde.plaine
 let renardSprite = new Image()
 renardSprite.src = "./pixil-frame-0.png"
 let preystats = [20]
@@ -45,7 +47,7 @@ function handlePreda(canEat){
         if (canEat){
             preyPop.forEach((prey)=>{
                 if (Math.floor(preda.x/g.cell) == prey.x && Math.floor(preda.y/g.cell) == prey.y){
-                    if (Math.random() < Math.round((colorSim("rgb(116, 220, 105)",prey.adn.color)/300)*100)/100){
+                    if (Math.random() < Math.round((colorSim(biom,prey.adn.color)/300)*100)/100){
                         prey.status = "eaten"
                         preda.eat = true
                     }
@@ -139,10 +141,10 @@ window.addEventListener('keydown',(e)=>{
     clearInterval(play)
     play = setInterval(turn,32)
 })
-
-function lol(){
-    
-}
+document.querySelector("#change").addEventListener("click",(e)=>{
+    biom = regionsDuMonde.desert
+    console.log(biom)
+})
 //init=> key event => go => play => turn => Stop => 
 
 export {g,map,rules,canva}
