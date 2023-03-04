@@ -31,10 +31,10 @@ function update(array,color){
     var slice = d3.svg.line()
         .interpolate("basis") 
         .x(function(d) { return xscl(d.x);}) // apply the x scale to the x data
-        .y(function(d) { return yscl(d.y);}) // apply the y scale to the y data     // This controls the vertical position of the Axis
+        .y(function(d) { return yscl(d.y);}) // apply the y scale to the y data
     popGraph.append("path")
         .attr("class", "line")
-        .attr("d", slice(xy)) // use the return value of slice(xy) as the data, 'd'
+        .attr("d", slice(xy))
         .style("fill", "none")
         .style("stroke", color)
         .style("stroke-width", 4);
@@ -76,12 +76,12 @@ export function compute(preyPop,day){
         sumG.push(rgbArray[1])
         sumB.push(rgbArray[2])
     })
-    let R = Math.round(sumR.reduce((a, b) => a + parseInt(b), 0)/sumR.length-1).toString()
-    let G = Math.round(sumG.reduce((a, b) => a + parseInt(b), 0)/sumG.length-1).toString()
-    let B = Math.round(sumB.reduce((a, b) => a + parseInt(b), 0)/sumB.length-1).toString()
-    
+    let moyenneCouleurs = (array) => Math.round(array.reduce((a, b) => a + parseInt(b), 0)/array.length-1).toString()
+    let R =  moyenneCouleurs(sumR)
+    let G =  moyenneCouleurs(sumG)
+    let B =  moyenneCouleurs(sumB)
+
     colorX = 10+rayon+(dayCtr*rayon*2)
-    console.log(colorY)
     colorGraph.append('circle')
         .attr('cx', colorX).attr('cy', colorY)
         .attr('r', rayon).attr('fill', 'rgb('+R+","+G+","+B+")");
