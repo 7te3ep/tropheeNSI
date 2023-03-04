@@ -1,7 +1,7 @@
 import {randArr,getNeighbors,shuffleArray,createPool} from "../tools.js"
 
 const spriteSheet = new Image();
-spriteSheet.src = "../MasterSimple.png";
+spriteSheet.src = "MasterSimple.png";
 
 let land = {
     x:16,
