@@ -31,7 +31,7 @@ class Game {
             this.preyPop.push(new Prey("rgb("+rdmColor()+","+rdmColor()+","+rdmColor()+")",this.param,borders[spawn].x,borders[spawn].y))
             if (borders.length > 10) borders.splice(spawn,1)
         }
-        getDOM("day").innerHTML = "DAY : "+this.day+"/"+this.param.len
+        getDOM("day").innerHTML = "JOURS : "+this.day+"/"+this.param.len
     }
 
     start(){
@@ -72,7 +72,7 @@ class Game {
         //natural selection
         // day ++
         this.day ++
-        getDOM("day").innerHTML = "DAY : "+this.day+"/"+this.param.len
+        getDOM("day").innerHTML = "JOURS : "+this.day+"/"+this.param.len
         // if day < max launch start
     }
 
