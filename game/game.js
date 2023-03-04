@@ -6,13 +6,14 @@ import {getBorders, randInt, rdmColor, randArr, getDOM } from "../tools.js"
 import {graph, compute} from "./data.js"
 
 class Game {
-    constructor(parameter){
+    constructor(parameter,spriteSheet){
         this.param = parameter
         this.preyPop = []
         this.predaPop = []
         this.day = 0
         this.stats = {preda : undefined, prey : undefined}
-        this.map = new Map(parameter,canva)
+        this.spriteSheet = spriteSheet
+        this.map = new Map(parameter,canva,this.spriteSheet )
         this.state
         this.fps = 0
         this.stats = {preda:[parameter.popSize],preys:[parameter.popSize]}

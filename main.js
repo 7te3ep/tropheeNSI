@@ -19,8 +19,13 @@ var parameter = {
 import {Game} from "./game/game.js"
 import { getDOM } from "./tools.js"
 
-let game  = new Game(parameter)
-game.init()
+const spriteSheet = new Image();
+spriteSheet.onload = function() { game.init() }
+spriteSheet.src = "MasterSimple.png";
+
+
+let game  = new Game(parameter,spriteSheet)
+
 
 getDOM("reset").addEventListener("click",()=>{
     getDOM("play").innerHTML = "PLAY"

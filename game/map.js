@@ -1,8 +1,5 @@
 import {randArr,getNeighbors,shuffleArray,createPool} from "../tools.js"
 
-const spriteSheet = new Image();
-spriteSheet.src = "MasterSimple.png";
-
 let land = {
     x:16,
     y:16
@@ -34,12 +31,13 @@ let hole = {
 }
 
 class Map {
-    constructor(parameter,canva){
+    constructor(parameter,canva,spriteSheet ){
         this.m
         this.rules = parameter.rules
         this.cellSize = parameter.cellSize
         this.canvaSize = canva
         this.wfcDepth = parameter.wfcDepth
+        this.spriteSheet = spriteSheet
     }
 
     init() {
@@ -105,7 +103,7 @@ class Map {
                     // le terrier
                     if (this.m[i][j].score == 0 ) {texture = hole}
                     // dessine la case
-                    ctx.drawImage(spriteSheet, texture.x, texture.y, 16, 16, i*this.cellSize,j*this.cellSize, this.cellSize, this.cellSize)
+                    ctx.drawImage(this.spriteSheet , texture.x, texture.y, 16, 16, i*this.cellSize,j*this.cellSize, this.cellSize, this.cellSize)
                     if (param.showCellScore) ctx.fillText(this.m[i][j].score, i*this.cellSize,j*this.cellSize+this.cellSize/2);
                 }
             })
