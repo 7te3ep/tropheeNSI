@@ -1,5 +1,38 @@
 import {randArr,getNeighbors,shuffleArray,createPool} from "../tools.js"
 
+const spriteSheet = new Image();
+spriteSheet.src = "../MasterSimple.png";
+
+let land = {
+    x:16,
+    y:16
+}
+
+let dirt = {
+    x:16,
+    y:128
+}
+
+let grass = {
+    x:218,
+    y:72
+}
+
+let tree = {
+    x:218,
+    y:90
+}
+
+let wall = {
+    x:218,
+    y:108
+}
+
+let hole = {
+    x:218,
+    y:126
+}
+
 class Map {
     constructor(parameter,canva){
         this.m
@@ -27,7 +60,7 @@ class Map {
 
     wfc(map,rules) {
         // on recupere toutes les cases de la map dans un array pool
-        let pool = shuffleArray(createPool(map)) 
+        let pool = shuffleArray(createPool(map))
 
         // on applique le wfc j'usqu'a ce que pool soit vide
         while(pool.length > 0){
@@ -62,22 +95,24 @@ class Map {
         this.m.forEach((x, i) => {
             x.forEach((y,j)=>{
                 if (this.m[i][j].entropy.length == 1){
-                    if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "dirt") { ctx.fillStyle = "rgb(220, 162, 105)" }
-                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "land") { ctx.fillStyle = "rgb(116, 220, 105)" }
-                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "tree") { ctx.fillStyle = "rgb(20, 500, 20)" }
-                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "grass") { ctx.fillStyle = "rgb(150, 500, 20)" }
-                    // si la case est une montagne, ou qu'elle est isolé/innaccessible on la rend noir, c'est de la montagne
-                    if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "wall" || this.m[i][j].score == undefined) { ctx.fillStyle = "black" }
-                    if (this.m[i][j].score == 0 ) {ctx.fillStyle = "red"}
-                    ctx.fillRect(i*this.cellSize,j*this.cellSize,this.cellSize,this.cellSize)
-                    ctx.fillStyle = "black"
+                    let texture
+                    if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "dirt") {texture = dirt }
+                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "land") { texture = land }
+                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "tree") { texture = tree }
+                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "grass") { texture = grass }
+                    // si la case est une montagne, ou qu'elle est isolé/innaccessible c'est un cailloux
+                    if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "wall" || this.m[i][j].score == undefined) { texture = wall }
+                    // le terrier
+                    if (this.m[i][j].score == 0 ) {texture = hole}
+                    // dessine la case
+                    ctx.drawImage(spriteSheet, texture.x, texture.y, 16, 16, i*this.cellSize,j*this.cellSize, this.cellSize, this.cellSize)
                     if (param.showCellScore) ctx.fillText(this.m[i][j].score, i*this.cellSize,j*this.cellSize+this.cellSize/2);
                 }
             })
         });
     }
 }
-
+// ctx.fillRect(i*this.cellSize,j*this.cellSize,this.cellSize,this.cellSize)
 function returnCant(cell,rules){
     // trouve les intersection entre les cant de toutes les entropy d'une case
     let cant = []
@@ -100,19 +135,19 @@ function expand(item,rules,map){
                 i--
             }
         }
-    })       
+    })
 }
 
 function scoreExpand(cell,map){
-    // ajoute 1 au score des cases autour de cell sur laquel on passe 
+    // ajoute 1 au score des cases autour de cell sur laquel on passe
     getNeighbors(map,cell,false)
         .filter((item)=>item.score == undefined)
         .forEach((item)=>{
             item.score = cell.score + 1
             // en fonction de son type, la case peut avoir un score modifié
             if (item.entropy[0] == "wall") item.score = 500
-            else if (item.entropy[0] == "tree") item.score = 500 
-            else if (item.entropy[0] == "dirt") item.score ++ 
+            else if (item.entropy[0] == "tree") item.score = 500
+            else if (item.entropy[0] == "dirt") item.score ++
     })
 }
 

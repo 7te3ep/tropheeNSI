@@ -1,6 +1,9 @@
 import { getNeighbors, shuffleArray } from "../tools.js"
 import { ctx } from "./canva.js"
 
+let rabbit = new Image()
+rabbit.src = "../rabbit.png"
+
 export class Prey {
     constructor(color,param,x,y){
         this.x = x
@@ -31,5 +34,6 @@ export class Prey {
         ctx.fillRect(pos.x,pos.y+(pos.pixel),this.param.cellSize,this.param.cellSize*0.8)
         ctx.fillRect(pos.x,pos.y,this.param.cellSize*0.4,this.param.cellSize)
         ctx.fillRect(pos.x+(pos.pixel*3),pos.y,this.param.cellSize*0.4,this.param.cellSize)
+        ctx.drawImage(rabbit, pos.x, pos.y,this.param.cellSize,this.param.cellSize)
     }
 }

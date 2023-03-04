@@ -4,7 +4,7 @@ var parameter = {
         len:50,
         spd:parseInt(getDOM('spd').value),
         popSize:20,
-        cellSize : 20,
+        cellSize : 25,
         wfcDepth:10,
         biom:"rgb(0,255,0)",
         rules:{
@@ -34,8 +34,9 @@ getDOM("showPathScore").addEventListener("click",()=>{
 })
 
 getDOM("play").addEventListener("click",()=>{
-    getDOM("play").innerHTML = "PLAYING"
-    game.start()
+    if (game.fps != 0) return
+        getDOM("play").innerHTML = "PLAYING"
+        game.start()
 })
 
 
