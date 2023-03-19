@@ -61,37 +61,3 @@ export function colorSim(color1,color2){
 
 export const getBorders = (map)=> {return createPool(map).filter((item)=>{return item.entropy[0] != "wall" &&  item.entropy[0] != "tree" && item.score != undefined}).filter((item)=>{return item.x == 0 || item.x == map.length-1 || item.y == 0 || item.y == map[0].length-1})}
 export let rdmColor = ()=> Math.ceil(Math.random()*255)
-
-export function rgb_to_hsv(r , g , b) {
-  
-    // R, G, B values are divided by 255
-    // to change the range from 0..255 to 0..1
-    r = r / 255.0;
-    g = g / 255.0;
-    b = b / 255.0;
-
-    // h, s, v = hue, saturation, value
-    var cmax = Math.max(r, Math.max(g, b)); // maximum of r, g, b
-    var cmin = Math.min(r, Math.min(g, b)); // minimum of r, g, b
-    var diff = cmax - cmin; // diff of cmax and cmin.
-    var h = -1, s = -1;
-
-    // if cmax and cmax are equal then h = 0
-    if (cmax == cmin)
-        h = 0;
-
-    // if cmax equal r then compute h
-    else if (cmax == r)
-        h = (60 * ((g - b) / diff) + 360) % 360;
-
-    // if cmax equal g then compute h
-    else if (cmax == g)
-        h = (60 * ((b - r) / diff) + 120) % 360;
-
-    // if cmax equal b then compute h
-    else if (cmax == b)
-        h = (60 * ((r - g) / diff) + 240) % 360;
-
-    // compute v
-    return h
-}

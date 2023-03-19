@@ -4,7 +4,7 @@ var parameter = {
         len:50,
         spd:parseInt(getDOM('spd').value),
         popSize:20,
-        cellSize : 25,
+        cellSize : 20,
         wfcDepth:10,
         biom:"rgb(0,255,0)",
         rules:{
@@ -19,20 +19,23 @@ var parameter = {
 import {Game} from "./game/game.js"
 import { getDOM } from "./tools.js"
 
+// charge la spritesheet pour eviter les problemes d'affichages pour les mauvaises connexions
 const spriteSheet = new Image();
 spriteSheet.onload = function() { game.init() }
 spriteSheet.src = "MasterSimple.png";
 
-
+//INIT
 let game  = new Game(parameter,spriteSheet)
 
+// HANDLE FRONTEND
 
 getDOM("reset").addEventListener("click",()=>{
     getDOM("play").innerHTML = "PLAY"
     clearInterval(game.state)
-    game  = new Game(parameter)
+    game  = new Game(parameter,spriteSheet)
     game.init()
 })
+
 getDOM("showPathScore").addEventListener("click",()=>{
     parameter.showCellScore = parameter.showCellScore ? false : true
     getDOM("showPathScore").innerHTML = parameter.showCellScore ? "Affiche score" : "N'affiche pas score"
@@ -44,5 +47,17 @@ getDOM("play").addEventListener("click",()=>{
         game.start()
 })
 
+getDOM('spd').oninput = function() {
+    parameter.spd = parseInt(this.value)
+    game.predaPop.forEach((preda)=>{
+        preda.updateSpd()
+    })
+}
 
-getDOM('spd').oninput = function() {parameter.spd = parseInt(this.value)}
+getDOM("submitQuantity").addEventListener("click",()=>{
+    parameter.len = getDOM("quantity").value
+})
+
+getDOM("biom").addEventListener("click",()=>{
+    parameter.biom = "rgb(205, 159, 33)"
+})

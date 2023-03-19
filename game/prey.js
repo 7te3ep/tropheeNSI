@@ -14,21 +14,24 @@ export class Prey {
     }
 
     update(map,preyPop){
+        // si la proie est sur le terrier, attribut le statu : "a survecu"
         if (map[this.x][this.y].score == 0) this.status = "survived"
 
+        // recupère les voisins
         let neighbors = shuffleArray(getNeighbors(map,this,false))
         neighbors =  neighbors
             .sort(function(a, b){return a.score - b.score})
             .filter((item)=>{return item.entropy[0]!= "wall"})
 
-        let crowded = preyPop.filter((prey)=>prey.status == "alive" && prey.x == neighbors[0].x && prey.y == neighbors[0].y).length == 0
-        if (neighbors.length != 0 && crowded){
+        let cheminLibre = preyPop.filter((prey)=>prey.status == "alive" && prey.x == neighbors[0].x && prey.y == neighbors[0].y).length == 0
+        if (neighbors.length != 0 && cheminLibre){
             this.x = neighbors[0].x
             this.y = neighbors[0].y
         }
     }
 
     draw(){
+        // draw prey background
         ctx.fillStyle = this.adn.color
         let pos = {x:this.x*this.param.cellSize,y:this.y*this.param.cellSize,pixel:this.param.cellSize/5}
         ctx.fillRect(pos.x,pos.y+(pos.pixel),this.param.cellSize,this.param.cellSize*0.8)
