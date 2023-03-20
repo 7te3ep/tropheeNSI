@@ -9,34 +9,42 @@
 </head>
 <body>
     <h1>Laboratoire Ecosysteme</h1>
-    <section id="simulation">
+    <section class="modernContainer modern">
         <canvas></canvas>
-        <div id="parameters">
-            <h2 id="day"></h2>
+        <section class="parameters">
+            <p id="day"></p>
             <button id="reset">RESET</button>
             <button id="play">JOUER</button>
             <button id="showPathScore">SCORE CASE</button>
-            <div class="slider">
-                VITESSE
-                <input type="range" min="1" max="30" value="15" id="spd">
+            <div>
+                <p>VITESSE</p>
+                <div>
+                    <input type="range" min="1" max="30" value="15" id="spd">
+                </div>
             </div>
-            <button id="biom">Appliquer un choc sur l'environnement</button>
+            <button id="biomChange">Appliquer un choc sur l'environnement</button>
             <div class="slider">
-                NOMBRE DE GENERATION
-                <input type="number" id="quantity" name="quantity" value="50" min="1" max="200" style="padding:5px;margin:5px; border:3px solid white;">
+                <p>NOMBRE DE GENERATION</p>
+                <input type="number" id="quantity" name="quantity" value="50" min="1" max="200">
                 <button id="submitQuantity">Mettre a jour</button>
             </div>
-        </div>
+        </section>
     </section>
-    <section id="stats">
-        <h2>Statistiques</h2>
-        <div id="graphiques">
-            <div id="popStats" class="graphs"><p>Population de proie (🟦) et de predateur (🟥) a cours du temps</p> </div>
-            <div id="colorStats" class="graphs"><p>Evolution de la couleur moyenne des proies, de gauche a droite, de haut en bas chronologiquement</p> </div>
-        </div>
+    <section id="graph" class="modernContainer modern">
+        <div id="popStats"><p>Population de proie (🟦) et de predateur (🟥) a cours du temps</p> </div>
+        <div id="colorStats"><p>Evolution de la couleur moyenne des proies, de gauche a droite, de haut en bas chronologiquement</p> </div>
     </section>
-
     <h1>Explications</h1>
+    <section id="explication" class="modernContainer modern">
+        <h2>La selection naturel</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, sapiente. Fugit veniam voluptatem eos minus repudiandae tenetur culpa? Sunt, sapiente cupiditate. Pariatur odit, nesciunt, obcaecati debitis quo quidem blanditiis libero nemo sint explicabo rerum ipsam facere dolor quasi voluptatum voluptatem impedit tenetur. Et magnam quisquam, natus architecto atque itaque expedita!</p>
+        <h2>La loi proies - prédateurs</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, sapiente. Fugit veniam voluptatem eos minus repudiandae tenetur culpa? Sunt, sapiente cupiditate. Pariatur odit, nesciunt, obcaecati debitis quo quidem blanditiis libero nemo sint explicabo rerum ipsam facere dolor quasi voluptatum voluptatem impedit tenetur. Et magnam quisquam, natus architecto atque itaque expedita!</p>
+        <h2>Le pathfinding</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, sapiente. Fugit veniam voluptatem eos minus repudiandae tenetur culpa? Sunt, sapiente cupiditate. Pariatur odit, nesciunt, obcaecati debitis quo quidem blanditiis libero nemo sint explicabo rerum ipsam facere dolor quasi voluptatum voluptatem impedit tenetur. Et magnam quisquam, natus architecto atque itaque expedita!</p>
+        <h2>La generation procédural</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, sapiente. Fugit veniam voluptatem eos minus repudiandae tenetur culpa? Sunt, sapiente cupiditate. Pariatur odit, nesciunt, obcaecati debitis quo quidem blanditiis libero nemo sint explicabo rerum ipsam facere dolor quasi voluptatum voluptatem impedit tenetur. Et magnam quisquam, natus architecto atque itaque expedita!</p>
+    </section>
     <script src="main.js" type="module"></script>
     <script src = "https://d3js.org/d3.v3.min.js"> </script>
 </body>

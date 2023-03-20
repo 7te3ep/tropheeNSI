@@ -58,6 +58,6 @@ getDOM("submitQuantity").addEventListener("click",()=>{
     parameter.len = getDOM("quantity").value
 })
 
-getDOM("biom").addEventListener("click",()=>{
+getDOM("biomChange").addEventListener("click",()=>{
     parameter.biom = "rgb(205, 159, 33)"
 })
