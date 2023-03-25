@@ -2,7 +2,7 @@ import { colorSim } from "../tools.js"
 import { ctx,canva } from "./canva.js"
 
 let eagle = new Image()
-eagle.src = "eagle.png"
+eagle.src = "../assets/eagle.png"
 let frames = [{x: 9,y: 30,w:20,h:21},{x: 40,y: 30,w:21,h:21},{x: 73,y: 31,w:21,h:26}]
 
 export class Preda {

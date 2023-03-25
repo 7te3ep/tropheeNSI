@@ -73,6 +73,11 @@ class Map {
             // on garde dans l'array pool les cases n'ayants pas eté collapse et on les trie par entropy croissante
             pool = filterPool(pool).sort((a,b)=>{return a.entropy.length - b.entropy.length})
         }
+        // regenerate if the map has to much rocks
+        if (400 < createPool(map).filter((element)=>element.entropy[0] == "wall").length){
+            console.log("reset")
+            this.init()
+        }
     }
 
     pathFinding(map){

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Laboratoire Ecosysteme</h1>
+    <section class="modernContainer modern">
+        <canvas></canvas>
+        <section class="parameters">
+            <p id="day"></p>
+            <button id="reset">RESET</button>
+            <button id="play">JOUER</button>
+            <button id="showPathScore">SCORE CASE</button>
+            <div>
+                <p>VITESSE</p>
+                <div>
+                    <input type="range" min="1" max="30" value="15" id="spd">
+                </div>
+            </div>
+            <button id="biomChange">Appliquer un choc sur l'environnement</button>
+            <div class="slider">
+                <p>NOMBRE DE GENERATION</p>
+                <input type="number" id="quantity" name="quantity" value="50" min="1" max="200">
+                <button id="submitQuantity">Mettre a jour</button>
+            </div>
+        </section>
+    </section>
+    <section id="graph" class="modernContainer modern">
+        <div id="popStats"><p>Population de proie (🟦) et de predateur (🟥) a cours du temps</p> </div>
+        <div id="colorStats"><p>Evolution de la couleur moyenne des proies, de gauche a droite, de haut en bas chronologiquement</p> </div>
+    </section>
+    <h1>Explications</h1>
+    <section id="explication" class="modernContainer modern">
+        <h2>La selection naturel</h2>
+        <p>
+            La sélection naturelle est le processus par lequel les organismes qui sont mieux adaptés à leur environnement ont plus de chances de survivre et de se reproduire, transmettant ainsi leurs caractéristiques avantageuses à leur descendance.
+        </p>
+        <p>
+            Prenons l'exemple des lapins qui obtiennent la couleur de leur environnement pour mieux se camoufler. Dans une population de lapins, il peut y avoir une grande variété de couleurs. Si l'environnement est majoritairement composé de zones avec une certaine couleur, comme le brun ou le gris, alors les lapins qui ont naturellement cette couleur ont plus de chances de survivre car ils sont mieux camouflés et moins visibles pour les prédateurs. Les lapins qui ont une couleur différente sont plus facilement repérables et sont donc plus vulnérables aux attaques.
+        </p>
+        <p>
+            Au fil du temps, les lapins qui ont la couleur avantageuse vont avoir plus de chances de survivre et de se reproduire, et leurs descendants auront également cette couleur avantageuse. Les lapins avec des couleurs moins adaptées auront moins de chances de survivre et de se reproduire, et leur couleur aura donc moins de chances d'être transmise à la génération suivante.
+        </p>
+        <p>
+            C'est ainsi que la sélection naturelle favorise les caractéristiques avantageuses dans une population. Dans cet exemple, la couleur des lapins est influencée par l'environnement et la sélection naturelle favorise les lapins qui ont la couleur qui leur permet de se camoufler le mieux.
+        </p>
+
+        <h2>La loi proies - prédateurs</h2>
+        <p>
+        La loi proie-prédateur, également appelée modèle Lotka-Volterra, est une théorie mathématique qui décrit la relation dynamique entre deux espèces dans un écosystème : les proies et les prédateurs.
+        </p>
+        <p>
+        Dans cet exemple, les lapins représentent les proies et les aigles les prédateurs. Les lapins se reproduisent rapidement et ont une capacité de croissance exponentielle s'ils ne sont pas mangés par les aigles. Les aigles, quant à eux, se nourrissent de lapins et leur population dépend donc de la quantité de nourriture disponible.
+        </p>
+        <p>
+        Au départ, la population de lapins est élevée car il n'y a pas encore beaucoup d'aigles pour les manger. Cela permet à la population d'aigles de se développer rapidement car il y a beaucoup de nourriture disponible. Cependant, à mesure que la population d'aigles augmente, le nombre de lapins diminue car ils sont davantage chassés.
+        </p>
+        <p>
+        À ce stade, la population d'aigles commence également à diminuer car il y a moins de nourriture disponible. Cela permet aux lapins de se reproduire plus facilement et leur population augmente à nouveau. Ce cycle se poursuit, avec des pics de population de lapins suivis de pics de population d'aigles, mais avec un léger décalage dans le temps car la population de prédateurs dépend de la population de proies.
+        </p>
+        <p>
+        Ainsi, les populations de lapins et d'aigles oscillent de manière cyclique, avec des pics en décalé, dans une relation proie-prédateur. Cela montre que les deux espèces ont une influence directe l'une sur l'autre et que leur survie dépend de leur capacité à s'adapter aux changements dans leur environnement.
+        </p>
+        <h2>La mutation</h2>
+
+        <p>
+        La mutation est un processus naturel qui se produit lorsque l'ADN d'un organisme subit une modification génétique. Les mutations peuvent être bénéfiques, nuisibles ou neutres pour l'organisme. Lorsque les conditions environnementales changent brusquement, les organismes qui ont une mutation bénéfique peuvent avoir un avantage de survie par rapport à ceux qui ne l'ont pas.
+        </p>
+        <p>
+        Dans cet exemple, imaginons qu'un changement brusque dans l'environnement rende les lapins plus vulnérables aux prédateurs, ce qui réduit leur population. Les lapins qui ont une mutation bénéfique qui leur donne une meilleure capacité de camouflage peuvent avoir un avantage sur les autres lapins, car ils sont moins susceptibles d'être détectés par les aigles. Par conséquent, les lapins qui ont cette mutation ont une meilleure chance de survie et de se reproduire.
+        </p>
+        <p>
+        Au fil du temps, la population de lapins avec la mutation bénéfique augmentera et se propagera dans la population globale de lapins. Cela leur permettra de mieux s'adapter aux nouvelles conditions environnementales et de survivre à l'augmentation de la pression de prédation des aigles.
+        </p>
+        <p>
+        En fin de compte, la mutation est importante car elle permet aux organismes de s'adapter à leur environnement en changeant leur génome pour mieux survivre. Les mutations peuvent conduire à une diversité génétique qui permet aux populations de s'adapter à des conditions environnementales changeantes et de résister aux maladies, aux parasites et aux prédateurs.
+        </p>
+
+        <h2>Le pathfinding</h2>
+        <p>
+        Le pathfinding est un algorithme qui permet de trouver le chemin le plus court entre deux points sur une grille. Dans cet exemple, les lapins cherchent à trouver le chemin le plus court pour atteindre leur terrier sur une grille.
+        </p>
+        <p>
+        L'algorithme A* inversé fonctionne en cherchant le chemin à partir de la destination (le terrier) plutôt que depuis la position de départ (la position actuelle des lapins). Cela signifie que l'algorithme explore les cases autour du terrier, puis les cases qui les entourent, et ainsi de suite, jusqu'à ce que la position actuelle des lapins soit atteinte.
+        </p>
+        <p>
+        Pour chaque case, l'algorithme calcule le coût total de cette case en ajoutant le coût de la case elle-même au coût de tous les mouvements nécessaires pour atteindre cette case à partir de la position actuelle des lapins. Le coût total est déterminé en utilisant une fonction heuristique qui estime la distance restante jusqu'au terrier.
+        </p>
+        <p>
+        L'algorithme A* inversé utilise une file de priorité pour stocker les cases qui ont été explorées mais qui n'ont pas encore été utilisées pour trouver le chemin le plus court. Les cases avec le coût total le plus faible sont placées en haut de la file de priorité, ce qui permet à l'algorithme de toujours explorer la case la plus prometteuse en premier.
+        </p>
+        <p>
+        Au fur et à mesure que l'algorithme explore les cases autour du terrier, il ajoute les cases voisines à la file de priorité et met à jour les coûts totaux pour chaque case. Finalement, l'algorithme atteint la position actuelle des lapins en utilisant le chemin le plus court possible.
+        </p>
+        <p>
+        Une fois que le chemin le plus court a été trouvé, les lapins peuvent utiliser ce chemin pour atteindre leur terrier en évitant les obstacles et en utilisant le chemin le plus rapide possible. L'utilisation de l'algorithme A* inversé permet de trouver rapidement et efficacement le chemin le plus court entre la position actuelle des lapins et leur terrier, en utilisant une estimation heuristique de la distance restante. Cela peut être appliqué dans de nombreuses situations où des objets doivent se déplacer dans un environnement avec des obstacles, comme dans les jeux vidéo ou les robots de navigation.
+        </p>
+
+        <h2>La generation procédural</h2>
+
+        <p>
+        La génération procédurale d'environnement sur une grille est un processus automatisé qui crée des environnements de jeu ou de simulation en utilisant des algorithmes. L'algorithme de wave function collapse (WFC) est un exemple d'algorithme utilisé pour la génération procédurale d'environnements sur une grille.
+        </p>
+        <p>
+        Dans cet exemple, imaginons que nous voulons créer un environnement sur une grille avec trois types de cases possibles : arbre, herbe et montagne. Nous voulons que les arbres et les montagnes ne soient pas à côté les uns des autres, et que les arbres ne soient pas à côté les uns des autres.
+        </p>
+        <p>
+        Pour utiliser l'algorithme de wave function collapse, nous commençons par définir une grille vide qui représente notre environnement. Nous plaçons ensuite chaque type de case possible sur la grille et nous créons des règles pour les interactions entre les cases.
+        </p>
+        <p>
+        Nous appliquons ensuite l'algorithme de wave function collapse pour remplir la grille. Cet algorithme fonctionne en choisissant une case vide sur la grille et en utilisant des règles pour déterminer quels types de cases peuvent être placées à cet emplacement en fonction des cases déjà présentes autour de cette case.
+        </p>
+        <p>
+        Par exemple, si une case voisine contient déjà une montagne, alors la case vide ne peut pas contenir une montagne. Si une case voisine contient un arbre, alors la case vide ne peut pas contenir un autre arbre. L'algorithme utilise ensuite des probabilités pour déterminer quel type de case doit être placé à la position vide en fonction des cases déjà présentes autour de cette case.
+        </p>
+        <p>
+        L'algorithme répète ce processus pour chaque case vide sur la grille jusqu'à ce que toutes les cases soient remplies avec un type de case. Finalement, l'algorithme produit un environnement sur une grille qui satisfait les règles que nous avons définies.
+        </p>
+        <p>
+        En utilisant l'algorithme de wave function collapse pour la génération procédurale d'environnement sur une grille, nous pouvons créer des environnements complexes avec des règles personnalisées et des variations aléatoires qui sont cohérentes et réalistes. Cela peut être appliqué dans de nombreuses situations où des environnements de jeu ou de simulation doivent être créés rapidement et efficacement.
+        </p>
+
+    </section>
+    <script src="../scripts/main.js" type="module"></script>
+    <script src = "https://d3js.org/d3.v3.min.js"> </script>
+</body>
+</html>

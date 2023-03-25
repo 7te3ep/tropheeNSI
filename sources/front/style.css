@@ -75,6 +75,7 @@ h1 {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+
 button {
     margin: 5px;
     border-radius: 20px;
@@ -90,6 +91,14 @@ button {
     -moz-transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
     -ms-transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
     -o-transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
+}
+
+button:hover {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
 }
 
 button:active {
@@ -127,4 +136,5 @@ button:active {
 
 #explication > p {
     font-size: 18px;
+    padding: 5px 0px;
 }

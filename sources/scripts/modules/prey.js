@@ -2,7 +2,7 @@ import { getNeighbors, shuffleArray } from "../tools.js"
 import { ctx } from "./canva.js"
 
 let rabbit = new Image()
-rabbit.src = "rabbit.png"
+rabbit.src = "../assets/rabbit.png"
 
 export class Prey {
     constructor(color,param,x,y){

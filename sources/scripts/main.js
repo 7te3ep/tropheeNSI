@@ -16,13 +16,13 @@ var parameter = {
         }
 }
 
-import {Game} from "./game/game.js"
+import {Game} from "./modules/game.js"
 import { getDOM } from "./tools.js"
 
 // charge la spritesheet pour eviter les problemes d'affichages pour les mauvaises connexions
 const spriteSheet = new Image();
 spriteSheet.onload = function() { game.init() }
-spriteSheet.src = "MasterSimple.png";
+spriteSheet.src = "../assets/MasterSimple.png";
 
 //INIT
 let game  = new Game(parameter,spriteSheet)

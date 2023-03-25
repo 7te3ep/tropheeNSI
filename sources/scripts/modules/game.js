@@ -91,7 +91,7 @@ class Game {
         // REPRODUCE PREYS
         let result = []
         let borders = getBorders(this.map.m)
-        for (let i = 0;i<5+this.preyPop.length*1.9;i++){
+        for (let i = 0;i<5+this.preyPop.length*1.5;i++){
             let spawn = randInt(0,borders.length-1)
             // MUTATION
             if (Math.random() <= 0.1){
