@@ -8,15 +8,47 @@
     box-sizing: border-box;
 }
 
+@keyframes anim {
+    0% {
+        top: -50vh;
+        opacity: 0%;
+    }
+    100% {
+        top: 0vh;
+        opacity: 100%;
+    }
+}
+
+
 body {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-items: center;
     flex-direction: column;
     width: 100vw;
     overflow-x: hidden;
-    height: fit-content;
-    padding: 20px;
+    padding: 00px 20px 20px 20px;
+    animation-duration: 1.2s; /* the duration of the animation */
+    animation-timing-function: ease-out; /* how the animation will behave */
+    animation-fill-mode: forwards;
+    animation-delay: 0s; /* how long to delay the animation from starting */
+    animation-iteration-count: 1; /* how many times the animation will play */
+    animation-name: anim; /* the name of the animation we defined above */
+}
+
+body::before {
+    z-index: 100;
+    content: "";
+    position: sticky;
+    top: 0px;
+    width: 100vw;
+    height: 50px;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#00d4ff",GradientType=1);
 }
 
 h1 {
@@ -137,4 +169,18 @@ button:active {
 #explication > p {
     font-size: 18px;
     padding: 5px 0px;
+    padding-left: 10px;
+    transition: transform 0.2s ease-in;
+    -webkit-transition: transform 0.2s ease-in;
+    -moz-transition: transform 0.2s ease-in;
+    -ms-transition: transform 0.2s ease-in;
+    -o-transition: transform 0.2s ease-in;
+}
+
+#explication > p:hover {
+    transform: scale(1.025);
+    -webkit-transform: scale(1.025);
+    -moz-transform: scale(1.025);
+    -ms-transform: scale(1.025);
+    -o-transform: scale(1.025);
 }

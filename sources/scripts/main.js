@@ -32,6 +32,7 @@ let game  = new Game(parameter,spriteSheet)
 getDOM("reset").addEventListener("click",()=>{
     getDOM("play").innerHTML = "PLAY"
     clearInterval(game.state)
+    parameter.biom = "rgb(0,255,0)"
     game  = new Game(parameter,spriteSheet)
     game.init()
 })
