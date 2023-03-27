@@ -51,6 +51,7 @@ body::before {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#00d4ff",GradientType=1);
 }
 
+
 h1 {
     font-size: 40px;
     padding-bottom: 30px;

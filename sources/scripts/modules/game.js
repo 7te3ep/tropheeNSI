@@ -91,10 +91,11 @@ class Game {
         // REPRODUCE PREYS
         let result = []
         let borders = getBorders(this.map.m)
+        console.log(this.param.mutation)
         for (let i = 0;i<5+this.preyPop.length*1.5;i++){
             let spawn = randInt(0,borders.length-1)
             // MUTATION
-            if (Math.random() <= 0.1){
+            if (Math.random() <= this.param.mutation){
                 result.push(new Prey("rgb("+rdmColor()+","+rdmColor()+","+rdmColor()+")",this.param,borders[spawn].x,borders[spawn].y))
             } else {
             // NORMAL REPROD

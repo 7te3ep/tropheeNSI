@@ -3,6 +3,7 @@ var parameter = {
         showCellScore:false,
         len:50,
         spd:parseInt(getDOM('spd').value),
+        mutation:parseInt(getDOM('mutation').value)/10,
         popSize:20,
         cellSize : 20,
         wfcDepth:10,
@@ -53,6 +54,10 @@ getDOM('spd').oninput = function() {
     game.predaPop.forEach((preda)=>{
         preda.updateSpd()
     })
+}
+
+getDOM('mutation').oninput = function() {
+    parameter.mutation = parseInt(this.value)/10
 }
 
 getDOM("submitQuantity").addEventListener("click",()=>{
