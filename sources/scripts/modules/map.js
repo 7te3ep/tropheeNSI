@@ -43,15 +43,15 @@ class Map {
     init() {
         this.m = []
         // crée un array contenant la map qui est une grille
-        for (let x = 0; x <= this.canvaSize.width;x += this.cellSize){
+        for (let x = 0; x+this.cellSize*1 <= this.canvaSize.width;x += this.cellSize){
             this.m.push([])
-            for (let y = 0;y<=this.canvaSize.height;y += this.cellSize){
+            for (let y = 0;y+this.cellSize*1<=this.canvaSize.height;y += this.cellSize){
                 // chaque case est un objet
                 this.m[x/this.cellSize].push({x:x/this.cellSize, y:y/this.cellSize, score:undefined, "wfc":undefined, "entropy":Object.keys(this.rules), layer:undefined})
             }
         }
         // appel la methode wfc pour appliquer le wave function collapse, le type de la case est sur l'attribut entropy
-        this.wfc(this.m,this.rules)
+        if (!this.wfc(this.m,this.rules)) return
         // applique ensuite le pathfinding pour attribuer un score a chaque case sur l'attribut layer
         this.pathFinding(this.m)
     }
@@ -76,6 +76,9 @@ class Map {
         // regenerate if the map has to much rocks
         if (400 < createPool(map).filter((element)=>element.entropy[0] == "wall").length){
             this.init()
+            return false
+        }else {
+            return true
         }
     }
 
