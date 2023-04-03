@@ -22,7 +22,6 @@ export class Prey {
         neighbors =  neighbors
             .sort(function(a, b){return a.score - b.score})
             .filter((item)=>{return item.entropy[0]!= "wall"})
-
         let cheminLibre = preyPop.filter((prey)=>prey.status == "alive" && prey.x == neighbors[0].x && prey.y == neighbors[0].y).length == 0
         if (neighbors.length != 0 && cheminLibre){
             this.x = neighbors[0].x
@@ -39,4 +38,6 @@ export class Prey {
         ctx.fillRect(pos.x+(pos.pixel*3),pos.y,this.param.cellSize*0.4,this.param.cellSize)
         ctx.drawImage(rabbit, pos.x, pos.y,this.param.cellSize,this.param.cellSize)
     }
+
+    
 }

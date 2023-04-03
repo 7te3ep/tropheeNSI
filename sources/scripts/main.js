@@ -65,5 +65,10 @@ getDOM("submitQuantity").addEventListener("click",()=>{
 })
 
 getDOM("biomChange").addEventListener("click",()=>{
-    parameter.biom = "rgb(205, 159, 33)"
+    parameter.biom = "rgb(148, 97, 34)"
+    const chocSpriteSheet = new Image();
+    chocSpriteSheet.onload = function() {
+        game.map.spriteSheet =  chocSpriteSheet
+    }
+    chocSpriteSheet.src = "../assets/MasterSimpleChoc.png";
 })

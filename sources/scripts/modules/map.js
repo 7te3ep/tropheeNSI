@@ -75,7 +75,6 @@ class Map {
         }
         // regenerate if the map has to much rocks
         if (400 < createPool(map).filter((element)=>element.entropy[0] == "wall").length){
-            console.log("reset")
             this.init()
         }
     }
@@ -96,22 +95,20 @@ class Map {
     draw(ctx,param) {
         // on parcour la map et on dessine sur le canva le graphisme correspondant a l'entropy
         this.m.forEach((x, i) => {
-            x.forEach((y,j)=>{
-                if (this.m[i][j].entropy.length == 1){
-                    let texture
-                    if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "dirt") {texture = dirt }
-                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "land") { texture = land }
-                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "tree") { texture = tree }
-                    else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "grass") { texture = grass }
-                    // si la case est une montagne, ou qu'elle est isolé/innaccessible c'est un cailloux
-                    if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "wall" || this.m[i][j].score == undefined) { texture = wall }
-                    // le terrier
-                    if (this.m[i][j].score == 0 ) {texture = hole}
-                    // dessine la case
-                    ctx.drawImage(this.spriteSheet , texture.x, texture.y, 16, 16, i*this.cellSize,j*this.cellSize, this.cellSize, this.cellSize)
-                    if (param.showCellScore) ctx.fillText(this.m[i][j].score, i*this.cellSize,j*this.cellSize+this.cellSize/2);
-                }
-            })
+        x.forEach((y,j)=>{
+                if (this.m[i][j].entropy.length != 1) return
+                let texture
+                if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "dirt") {texture = dirt }
+                else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "land") { texture = land }
+                else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "tree") { texture = tree }
+                else if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "grass") { texture = grass }
+                // si la case est une montagne, ou qu'elle est isolé/innaccessible c'est un cailloux
+                if (this.m[i][j].wfc == true && this.m[i][j].entropy[0] == "wall" || this.m[i][j].score == undefined) { texture = wall }
+                if (this.m[i][j].score == 0 ) {texture = hole}
+                // dessine la case
+                ctx.drawImage(this.spriteSheet , texture.x, texture.y, 16, 16, i*this.cellSize,j*this.cellSize, this.cellSize, this.cellSize)
+                if (param.showCellScore) ctx.fillText(this.m[i][j].score, i*this.cellSize,j*this.cellSize+this.cellSize/2);
+        })
         });
     }
 }
