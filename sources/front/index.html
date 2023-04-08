@@ -5,16 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Laboratoire Ecosysteme</title>
+    <title>Lapins Pas Cretins</title>
 </head>
 <body>
-    <h1>Laboratoire Ecosysteme</h1>
+    <div id="tutorial">
+        <div id="blur"></div>
+        <div id="content">
+            <img src="../assets/tutorial.png" alt="">
+            <div id="txt">
+                <strong>Lapin</strong> 
+                <br> <br>
+                Bonjour, bienvenu dans la simulation educative ! <br>
+                 Dès que tu appuira sur jouer, tu pourra observer
+                un environnemement dans lequel des lapins essaieront chaque jours d'atteindre leur terrier, or ils
+                sont chassé par les aigles. Je te laisse observer, tu devrait remarquer des phenomènes a l'aide des graphiques juste en dessou. <br> <br>
+                Ensuite des explications se trouve en bas du site pour que tu puisse comprendre les phenomènes mais aussi comment la simulation fonctionne en parti ! <br> <br>
+                Je te conseil de ne pas toucher au paramètres pour commencer, a part la vitesse que tu peux augmenter pour avoir des resultats interessants plus vite. <br> <br>
+                Bonne decouverte ! <br>
+                <i>Clique n'importe ou pour acceder au site</i>
+            </div>
+        </div>
+    </div>
+    <h1>Lapins Pas Cretins</h1>
     <section class="modernContainer modern">
-        <canvas>
-        </canvas>
+        <canvas style="border-radius: 10px;"></canvas>
         <section class="parameters">
             <p id="day"></p>
-            <button id="reset">RESET</button>
+            <button id="reset">RENITIALISER</button>
             <button id="play">JOUER</button>
             <button id="showPathScore">SCORE CASE</button>
             <div>
@@ -29,7 +46,7 @@
                     <input type="range" min="0" max="10" value="1" id="mutation">
                 </div>
             </div>
-            <button id="biomChange">Appliquer un choc sur l'environnement</button>
+            <button id="biomChange">Appliquer un changement climatique</button>
             <div class="slider">
                 <p>NOMBRE DE GENERATION</p>
                 <input type="number" id="quantity" name="quantity" value="50" min="1" max="200">
@@ -38,12 +55,12 @@
         </section>
     </section>
     <section id="graph" class="modernContainer modern">
-        <div id="popStats"><p>Population de proie (🟦) et de predateur (🟥) a cours du temps</p> </div>
+        <div id="popStats"><p>Population de proie (🟦) et de predateurs (🟥) a cours du temps</p> </div>
         <div id="colorStats"><p>Evolution de la couleur moyenne des proies, de gauche a droite, de haut en bas chronologiquement</p> </div>
     </section>
     <h1>Explications</h1>
     <section id="explication" class="modernContainer modern">
-        <h2>La selection naturel</h2>
+        <h2>La selection naturelle</h2>
         <p>
             La sélection naturelle est le processus par lequel les organismes qui sont mieux adaptés à leur environnement ont plus de chances de survivre et de se reproduire, transmettant ainsi leurs caractéristiques avantageuses à leur descendance.
         </p>
@@ -108,7 +125,7 @@
         Une fois que le chemin le plus court a été trouvé, les lapins peuvent utiliser ce chemin pour atteindre leur terrier en évitant les obstacles et en utilisant le chemin le plus rapide possible. L'utilisation de l'algorithme A* inversé permet de trouver rapidement et efficacement le chemin le plus court entre la position actuelle des lapins et leur terrier, en utilisant une estimation heuristique de la distance restante. Cela peut être appliqué dans de nombreuses situations où des objets doivent se déplacer dans un environnement avec des obstacles, comme dans les jeux vidéo ou les robots de navigation.
         </p>
 
-        <h2>La generation procédural</h2>
+        <h2>La génération procédurale</h2>
 
         <p>
         La génération procédurale d'environnement sur une grille est un processus automatisé qui crée des environnements de jeu ou de simulation en utilisant des algorithmes. L'algorithme de wave function collapse (WFC) est un exemple d'algorithme utilisé pour la génération procédurale d'environnements sur une grille.
@@ -131,9 +148,8 @@
         <p>
         En utilisant l'algorithme de wave function collapse pour la génération procédurale d'environnement sur une grille, nous pouvons créer des environnements complexes avec des règles personnalisées et des variations aléatoires qui sont cohérentes et réalistes. Cela peut être appliqué dans de nombreuses situations où des environnements de jeu ou de simulation doivent être créés rapidement et efficacement.
         </p>
-
     </section>
-    <script src="../scripts/main.js" type="module"></script>
+    <script src="../scripts/main.js" type="module"> </script>
     <script src = "https://d3js.org/d3.v3.min.js"> </script>
 </body>
 </html>

@@ -72,3 +72,7 @@ getDOM("biomChange").addEventListener("click",()=>{
     }
     chocSpriteSheet.src = "../assets/MasterSimpleChoc.png";
 })
+
+document.querySelector("body").addEventListener("click",()=>{
+    getDOM("tutorial").style.display = "none"
+})
