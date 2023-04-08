@@ -114,6 +114,11 @@ h1 {
     padding: 40px;
 }
 
+canvas {
+    border-radius: 10px;
+    width: 65vw;
+}
+
 .parameters {
     display: flex;
     flex-direction: column;
