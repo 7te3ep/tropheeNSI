@@ -110,7 +110,10 @@ class Map {
                 if (this.m[i][j].score == 0 ) {texture = hole}
                 // dessine la case
                 ctx.drawImage(this.spriteSheet , texture.x, texture.y, 16, 16, i*this.cellSize,j*this.cellSize, this.cellSize, this.cellSize)
-                if (param.showCellScore) ctx.fillText(this.m[i][j].score, i*this.cellSize,j*this.cellSize+this.cellSize/2);
+                if (param.showCellScore){
+                    ctx.fillStyle = "white"
+                    ctx.fillText(this.m[i][j].score, i*this.cellSize,j*this.cellSize+this.cellSize/2);
+                }
         })
         });
     }
