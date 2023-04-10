@@ -38,6 +38,4 @@ export class Prey {
         ctx.fillRect(pos.x+(pos.pixel*3),pos.y,this.param.cellSize*0.4,this.param.cellSize)
         ctx.drawImage(rabbit, pos.x, pos.y,this.param.cellSize,this.param.cellSize)
     }
-
-    
 }
